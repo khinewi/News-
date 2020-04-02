@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 
 const routes = require("./routes");
@@ -27,7 +29,7 @@ app.use(routes);
 
 
 
-// Connect to the Mongo DB
+// Connect to the MySql db
 db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
