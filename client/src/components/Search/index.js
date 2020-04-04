@@ -1,25 +1,40 @@
 // Index for the search folder
 import React, { Component } from "react";
+import axios from "axios"; 
 
+// const searchInput = this.state.searchInput; 
 class Search extends Component {
-    state = {};
+    constructor(props) {
+        super(props);
+        this.state = {value: ""};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
     
-    handleFormSubmit(event){
-        event.preventDefault()
-    console.log("spitout")
+    handleChange(event) {
+        this.setState({
+            value: event.target.value
+        })
     }
 
+    handleFormSubmit(event) {
+        event.preventDefault()
+        const apiUrl=`https://newsapi.org/v2/top-headlines?q=${this.state.value}&country=us&apiKey=a8e6c51a2f8b46f7a40bb49a66178133`
+        console.log(this.state.value)
+        axios.get(apiUrl)
+        .then(response => console.log(response))
+    }
     render() {
-        return (   
-        <form>
-            <input type="text" placeholder="search..."/>
-            <button
-          onClick={this.handleFormSubmit}
-          type="submit"
-        >
-          Search
+        return (
+            <form>
+                <input type="text" onChange={this.handleChange} value={this.state.value} placeholder="search..." />
+                <button
+                    onClick={this.handleFormSubmit}
+                    type="submit"
+                >
+                    Search
         </button>
-        </form> 
+            </form>
         );
     }
 }
