@@ -2,7 +2,8 @@ const path = require("path");
 const router = require("express").Router();
 const newsRoutes = require("./news");
 const userRoutes = require("./user");
-// Book routes
+// News routes
+router.use("/login", loginRoutes);
 router.use("/news", newsRoutes);
 router.use("/user", userRoutes);
 

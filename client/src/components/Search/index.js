@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import axios from "axios"; 
 
-// const searchInput = this.state.searchInput; 
 class Search extends Component {
     constructor(props) {
         super(props);
