@@ -6,11 +6,12 @@ class Result extends Component {
         this.state = {};
     }
 
+    
+
     render() {
         return (
-            <div className="card mt-4">
-                
-            </div>
+        <li className="list-group-item">
+      </li>
         );
     }
 }

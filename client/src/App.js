@@ -14,7 +14,7 @@ class App extends Component {
       <div>
         <Search
           onResult={data => {
-            this.setState({ data: data })
+            this.setState([data])
           }}
         />
         {this.state.data}
