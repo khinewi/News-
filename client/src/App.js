@@ -7,18 +7,20 @@ import Result from "./components/Result";
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { data: "" }
+    this.state = { data:[] }
   }
   render() {
     return (
       <div>
         <Search
           onResult={data => {
-            this.setState([data])
+            this.setState({data: data.articles})
           }}
         />
-        {this.state.data}
-      </div>
+        {/* {this.state.data.map(data => {
+          console.log(data)
+        })} 
+      </div> */}
     );
   }
 }
