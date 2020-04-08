@@ -40,7 +40,6 @@ class Search extends Component {
                         <div>{item.title}</div>
                         <div>{item.author}</div>
                         <div>{item.description}</div>
-                        <div>{item.url}</div>
                     </div>
                 ))}
             </div>
