@@ -22,3 +22,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+ul {
+  list-style-type: none
+}
+
+form {
+  float: right;
+  text-align: right;
+}
+
+img {
+  height: 100px;
+}

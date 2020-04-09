@@ -1,35 +1,31 @@
 const db = require("../models");
 
-// Defining methods for the newsController
+// Defining methods for the NewsController
 module.exports = {
   findAll: function(req, res) {
-    db.News
-      .find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
+    db.News.find(req.query)
+      .then(dbNews => res.json(dbNews))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.News.findAll({ where: { id: req.params.id } }).then(function(response) {
-        return res.json(response);
-    })
-    },
+    db.News.findById(req.params.id)
+      .then(dbNews => res.json(dbNews))
+      .catch(err => res.status(422).json(err));
+  },
   create: function(req, res) {
-    db.News.create({ where: { id: req.params.id } }).then(function(response) {
-        return res.json(response);
-    })
+    db.News.create(req.body)
+      .then(dbNews => res.json(dbNews))
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.News
-      .findOneAndUpdate({ where: { id: req.params.id } }).then(function(response) {
-        return res.json(response);
-    })
+    db.News.findOneAndUpdate({ id: req.params.id }, req.body)
+      .then(dbNews => res.json(dbNews))
+      .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.News
-      .findById({ where: { id: req.params.id } }).then(function(response) {
-        return res.json(response);
-      })
-    }
-}
-
+    db.News.findById(req.params.id)
+      .then(dbNews => dbNews.remove())
+      .then(dbNews => res.json(dbNews))
+      .catch(err => res.status(422).json(err));
+  }
+};

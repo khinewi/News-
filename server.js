@@ -8,7 +8,7 @@ var passport = require("./config/passport");
 const app = express();
 
 var db = require("./models");
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT | 3001;
 
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-// app.use(routes);
+app.use(routes);
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/NewsDB")

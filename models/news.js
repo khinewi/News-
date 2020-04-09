@@ -1,29 +1,10 @@
-const db = require("../models");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
-var bcrypt = require("bcryptjs");
-// Creating our User model
-module.exports = function(sequelize, DataTypes) {
-    var News = sequelize.define("News", {
-        // The email cannot be null, and must be a proper email before creation
-        Topic: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isEmail: true
-            }
-        }
+const newsSchema = new Schema({
+  Topic: { type: String, required: true }
+});
 
-    });
+const News = mongoose.model("News", newsSchema);
 
-    News.associate = function(models) {
-        News.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
-
-    return News;
-};
+module.exports = News;

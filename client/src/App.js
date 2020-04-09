@@ -11,12 +11,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Search
-          // onResult={data => {
-          //   console.log(data)
-          //   // this.setState({data: data.articles})
-          // }}
-        />
+        <Search/>
+        
       </div>
     );
   }
