@@ -82,7 +82,7 @@ class Search extends Component {
                 </nav> 
                 <div className="container">
                    {this.state.news.map(item => (
-                   <button className="btn btn-primary>"    
+                   <button key={item.Topic} className="btn btn-primary>"    
                        onClick={this.handleButtonSubmit(item.Topic)}
                        type="submit">{item.Topic}
                     </button>
