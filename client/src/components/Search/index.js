@@ -48,21 +48,24 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light mb-2">
+            <div class="jumbotron">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-light mb-2 justify-content-between">
                 <img src='https://library.kissclipart.com/20180905/eqe/kissclipart-read-glasses-icon-clipart-glasses-computer-icons-5306d0a60e989aad.jpg' />
-                <a className="navbar-brand">  News Feed</a>
-                <form className="pull-right">
-                    <input clssName="form-control mr-sm-2" type="text" onChange={this.handleChange} value={this.state.value} placeholder="Search" />
-                    <button className="btn btn-outline-success my-2 my-sm-0"
+                <a className="navbar-brand ">  News Feed</a>
+                <form className="form-inline ">
+                    <input className="form-control mr-sm-2" type="text" onChange={this.handleChange} value={this.state.value} placeholder="....." />
+                    <button className="btn btn-outline-success btn-sm"
                         onClick={this.handleFormSubmit}
                         type="submit">Search
                 </button>
                 </form>
                 </nav>
-                <div>
+                <div class="container">
                    {this.state.news.map(item => (
-                       <div>{item.Topic} </div>
+                   <button className="btn btn-primary>"    
+                       onClick={this.handleFormSubmit}
+                       type="submit">{item.Topic}
+                    </button>
                  ))}
                 </div>
                 <div>
@@ -81,4 +84,3 @@ class Search extends Component {
     }
 }
 export default Search;
-
