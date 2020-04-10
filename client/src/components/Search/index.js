@@ -29,6 +29,26 @@ class Search extends Component {
             })
 
             API.saveNews({ Topic: this.state.value})
+            .then(res =>
+                this.getSearchTopic()
+                )
+    }
+
+    handleButtonSubmit= term => event => {
+        event.preventDefault()
+        const apiUrl = `https://newsapi.org/v2/top-headlines?q=${term}&country=us&apiKey=a8e6c51a2f8b46f7a40bb49a66178133`
+        axios.get(apiUrl)
+            .then(response => {
+                console.log(response)
+                this.setState({ data: response.data.articles })
+            })
+    }
+
+    handleClearButton = () => {
+        API.deleteNews()
+        .then(res =>
+            this.getSearchTopic()
+            )
     }
 
     getSearchTopic = () => {
@@ -48,9 +68,9 @@ class Search extends Component {
 
     render() {
         return (
-            <div class="jumbotron">
-            <nav className="navbar navbar-expand-lg navbar-dark bg-light mb-2 justify-content-between">
-                <img src='https://library.kissclipart.com/20180905/eqe/kissclipart-read-glasses-icon-clipart-glasses-computer-icons-5306d0a60e989aad.jpg' />
+            <div className="jumbotron">
+            <nav className="navbar navbar-dark bg-light mb-2 justify-content-between">
+                <img className="logo" src='https://library.kissclipart.com/20180905/eqe/kissclipart-read-glasses-icon-clipart-glasses-computer-icons-5306d0a60e989aad.jpg' />
                 <a className="navbar-brand ">  News Feed</a>
                 <form className="form-inline ">
                     <input className="form-control mr-sm-2" type="text" onChange={this.handleChange} value={this.state.value} placeholder="....." />
@@ -59,27 +79,33 @@ class Search extends Component {
                         type="submit">Search
                 </button>
                 </form>
-                </nav>
-                <div class="container">
+                </nav> 
+                <div className="container">
                    {this.state.news.map(item => (
                    <button className="btn btn-primary>"    
-                       onClick={this.handleFormSubmit}
+                       onClick={this.handleButtonSubmit(item.Topic)}
                        type="submit">{item.Topic}
                     </button>
                  ))}
+                <div></div>
+                   <button className="btn btn-primary>"    
+                       onClick={() => this.handleClearButton()}
+                       type="submit"> CLEAR
+                    </button>                        
                 </div>
-                <div>
+                
+                <div className="container-fluid">
                     {this.state.data.map(item => (
-                        <ul key={item.title}>
-                            <li> <img src={item.urlToImage} /> </li>
-                            <li>{item.title}, {item.author}</li>
-                            <li>{item.description}</li>
-                            <li>{item.content}</li>
-                            <li><a href={item.url}> More... </a></li>
-                        </ul>
+                        <div className="row" key={item.title}>
+                            <div className="col-9">{item.title}: {item.author}</div>
+                            <br></br>
+                            <div className="col-4"> <img src={item.urlToImage} /> </div>
+                            <div className="col-6"> {item.description} <div> {item.content}</div></div>
+                            <a href={item.url}> Direct Link... </a>
+                        </div>
                     ))}
                 </div>
-                </div>
+            </div>
         );
     }
 }

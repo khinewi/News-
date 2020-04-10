@@ -8,5 +8,8 @@ export default {
   // Saves a news to the database
   saveNews: function(newsData) {
     return axios.post("/api/news", newsData);
+  },
+  deleteNews: function() {
+    return axios.delete("/api/news");
   }
 };
