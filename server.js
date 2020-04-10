@@ -3,11 +3,11 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-var session = require("express-session");
-var passport = require("./config/passport");
+// var session = require("express-session");
+// var passport = require("./config/passport");
 const app = express();
 
-var db = require("./models");
+// var db = require("./models");
 const PORT = process.env.PORT | 3001;
 
 // Configure body parsing for AJAX requests
