@@ -8,7 +8,7 @@ const routes = require("./routes");
 const app = express();
 
 // var db = require("./models");
-const PORT = process.env.PORT | 3001;
+const PORT = process.env.PORT || 3001;
 
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
