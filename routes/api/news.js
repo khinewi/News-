@@ -8,10 +8,6 @@ router.route("/")
   .delete(newsController.remove);
 
 // Matches with "/api/news/:id"
-router
-  .route("/:id")
-  .get(newsController.findById)
-  .put(newsController.update)
-  .delete(newsController.remove);
+
 
 module.exports = router;
