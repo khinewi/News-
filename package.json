@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "news",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "News",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -26,12 +26,9 @@
     "express-session": "^1.17.0",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.7",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.1.0",
     "npm": "^6.13.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "sequelize": "^5.21.4"
+    "path": "^0.12.7"
   }
 }
